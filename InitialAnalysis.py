@@ -1,4 +1,5 @@
 import scipy.sparse
+import scipy.io
 from scipy.sparse import diags
 import plotly
 import generateSpMM
@@ -32,11 +33,12 @@ def build_rand_sparse_diag_mat_and_multiply():
 def build_rand_sparse_mat_with_compression_ratio_and_multiply():
     #array = diags(random.random_sample(25).tolist(), 0).toarray()
     #print array
-    array = generateSpMM.generate_sparse_array(3,25,3)
-    heat_map_data1 = [go.Heatmap(z=np.flipud(array).tolist())]
-    heat_map_data2 = [go.Heatmap(z=np.flipud((LA.matrix_power(array, 2))).tolist())] #multiply with itself.
-    plot_url = plotly.offline.plot(heat_map_data1, filename='basic-heatmap1.html')
-    plot_url = plotly.offline.plot(heat_map_data2, filename='basic-heatmap2.html')
+    array = generateSpMM.generate_sparse_array(3,25,1)
+    scipy.io.mmwrite("syn_mat.mtx",scipy.sparse.csr_matrix(array),field = 'real')
+    #heat_map_data1 = [go.Heatmap(z=np.flipud(array).tolist())]
+    #heat_map_data2 = [go.Heatmap(z=np.flipud((LA.matrix_power(array, 2))).tolist())] #multiply with itself.
+    #plot_url = plotly.offline.plot(heat_map_data1, filename='basic-heatmap1.html')
+    #plot_url = plotly.offline.plot(heat_map_data2, filename='basic-heatmap2.html')
 
 def run():
     build_rand_sparse_mat_with_compression_ratio_and_multiply()
