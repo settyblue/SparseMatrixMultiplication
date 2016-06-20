@@ -4,6 +4,10 @@ from array import *
 import numpy
 import random
 
+# This file has been deprecated.
+# Please refer the generateSpMM2.py for creation of sparse matrices.
+
+
 def generate_sparse_matrix(m,n,c):
     matrix = numpy.zeros((n, n))
     offset = (m-c)/(m-1) * m
@@ -13,6 +17,7 @@ def generate_sparse_matrix(m,n,c):
     #print sparse.csr_matrix(matrix)
     return sparse.csr_matrix(matrix)
 
+
 def generate_sparse_array(m,n,c):
     matrix = numpy.zeros((n, n))
     offset = (m-c)/(m-1) * m
@@ -21,6 +26,7 @@ def generate_sparse_array(m,n,c):
             matrix[i][(offset*i+j)%n] = random.random()
     #print sparse.csr_matrix(matrix)
     return matrix
+
 
 def run():
     number_of_nnz_per_row = m = 3 ; #alias m
