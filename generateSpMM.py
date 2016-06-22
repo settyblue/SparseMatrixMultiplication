@@ -1,6 +1,4 @@
 from scipy import sparse
-from scipy import *
-from array import *
 import numpy
 import random
 
@@ -33,5 +31,6 @@ def run():
     size_of_matrix = n = 10; # alias n (square matrices only.)   m << n
     compression_ratio = c = 1; #varies from 1 to m
     generate_sparse_matrix(m, n, c)
+
 
 run()
