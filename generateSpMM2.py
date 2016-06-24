@@ -86,3 +86,6 @@ def run():
     for i,j,k in zip([8,10,14,21,30,40],[1024000,512000,512000,256000,256000,128000], skip_mat):
         for l in k:
             generate_sparse_matrix(nnz_per_row = i, nrows = j, skip_length = l, scattered=True, both=False)
+
+
+run()
