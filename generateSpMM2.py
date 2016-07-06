@@ -88,4 +88,8 @@ def run():
             generate_sparse_matrix(nnz_per_row = i, nrows = j, skip_length = l, scattered=True, both=False)
 
 
-run()
+def run2():
+    generate_sparse_matrix(scattered=True)
+
+
+run2()
