@@ -96,4 +96,17 @@ def run3():
     generate_sparse_matrix(nnz_per_row = 8, nrows = 1024000, skip_length = 0, scattered=True, both=False)
 
 
+def run4():
+    skip_mat = [[0, 4, 8],
+                 [0, 5, 10],
+                 [0, 7, 14],
+                 [0, 12, 21],
+                 [0, 15, 30],
+                 [0, 20, 40]]
+
+    for i,j,k in zip([8,10,14,21,30,40],[1024,512,512,256,256,256], skip_mat):
+        for l in k:
+            generate_sparse_matrix(nnz_per_row = i, nrows = j, skip_length = l, scattered=True, both=True, \
+                                   prefix='small_')
+
 run3()
