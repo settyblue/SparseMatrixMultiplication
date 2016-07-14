@@ -109,4 +109,4 @@ def run4():
             generate_sparse_matrix(nnz_per_row = i, nrows = j, skip_length = l, scattered=True, both=True, \
                                    prefix='small_')
 
-run3()
+run4()
