@@ -75,6 +75,34 @@ def generate_sparse_matrix(nnz_per_row=4, nrows = 10, skip_length = 2, scattered
         create_matrix_market_file(values,col_idx,row_ptr, nnz_per_row, nrows, prefix=prefix, total_nnz=nnz_per_row*nrows)
 
 
+def generate_band_sparse_matrix(nnz_per_row = 5, nrows = 10, prefix = ''):
+    row_ptr = [0]
+    col_idx = []
+    values = []
+
+    start_col_index = 0
+    nnz_so_far = 0
+    nnz_this_row = int(nnz_per_row/2) + 1
+    mid_value = nnz_this_row
+    prev_row_start_point = 0
+    for rowid in range(nrows):
+        for j in range(nnz_this_row):
+            col_idx.append((start_col_index+j)%nrows)
+            values.append(random.random())
+        nnz_so_far += nnz_this_row
+        row_ptr.append(nnz_so_far)
+
+        if rowid < mid_value-1:
+            nnz_this_row += 1
+        elif rowid < nrows - mid_value:
+            nnz_this_row = nnz_per_row
+            start_col_index += 1
+        else:
+            nnz_this_row -= 1
+            start_col_index += 1
+    create_matrix_market_file(values,col_idx,row_ptr, nnz_per_row, nrows, -1, prefix=prefix, total_nnz=nnz_so_far)
+
+
 def run():
     skip_mat = [[0, 1, 2, 3, 4, 5, 6, 7, 8],
                  [0, 1, 2, 4, 5, 6, 8, 9, 10],
