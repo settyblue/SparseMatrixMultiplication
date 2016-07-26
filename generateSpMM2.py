@@ -137,4 +137,9 @@ def run4():
             generate_sparse_matrix(nnz_per_row = i, nrows = j, skip_length = l, scattered=True, both=True, \
                                    prefix='small_')
 
+
+def run5():
+    generate_band_sparse_matrix(nrows=256,nnz_per_row=7,prefix='Test_')
+
+
 run4()
