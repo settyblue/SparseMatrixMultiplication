@@ -142,4 +142,10 @@ def run5():
     generate_band_sparse_matrix(nrows=256,nnz_per_row=7,prefix='Test_')
 
 
+def run6():
+    for i in [1024*1024]:
+        for j in [7, 15, 31, 63, 127, 255]:
+            generate_band_sparse_matrix(nrows=i,nnz_per_row=j, prefix='band_')
+
+
 run5()
