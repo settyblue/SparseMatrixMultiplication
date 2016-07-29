@@ -148,4 +148,4 @@ def run6():
             generate_band_sparse_matrix(nrows=i,nnz_per_row=j, prefix='band_')
 
 
-run5()
+run6()
